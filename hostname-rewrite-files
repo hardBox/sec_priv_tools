@@ -1,0 +1,57 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          hostname-rewrite-files
+# Required-Start:    mountall
+# Required-Stop:
+# Should-Start:      glibc
+# Default-Start:     S
+# Default-Stop:
+# Short-Description: Writes the current hostname to disk
+# Description:       Writes the current hostname to disk when the
+#                    filesystem has been remounted (to enable permanent
+#                    name change).
+### END INIT INFO
+# Written by Someone, May 2010
+## INSTALLING:
+# sudo cp hostname-rewrite-files /etc/init.d/hostname-rewrite-files
+# sudo chmod u+x /etc/init.d/hostname-rewrite-files
+# sudo update-rc.d hostname-rewrite-files start 36 S .
+# install other script
+# hope it works
+# ???
+# PROFIT!
+
+
+PATH=/sbin:/bin
+
+. /lib/init/vars.sh
+. /lib/lsb/init-functions
+
+do_start () {
+	HOSTNAME=$(hostname)
+	OLD_HOSTNAME=`cat /etc/hostname`
+	if [ ! -z "$OLD_HOSTNAME" ] && [ ! -z "$HOSTNAME" ] && [ "$OLD_HOSTNAME" != "$HOSTNAME" ]; then
+	for file in /etc/hostname /etc/hosts; do
+		log_action_begin_msg "replacing ${OLD_HOSTNAME} with $HOSTNAME in file $file"
+		sed s:${OLD_HOSTNAME}:${HOSTNAME}:g $file > ${file}.new && mv ${file}.new $file && log_action_begin_msg "done: replacing ${OLD_HOSTNAME} with ${HOSTNAME}" || log_action_warning_msg "failed when replacing ${OLD_HOSTNAME} with ${HOSTNAME} in $file"
+	done
+	fi
+	exit 0
+}
+
+case "$1" in
+  start|"")
+	do_start
+	;;
+  restart|reload|force-reload)
+	echo "Error: argument '$1' not supported" >&2
+	exit 3
+	;;
+  stop)
+	# No-op
+	;;
+  *)
+	echo "Usage: hostname.sh [start|stop]" >&2
+	exit 3
+	;;
+esac
