@@ -10,7 +10,6 @@ echo "[] Checking for dictionary file"
 
 
 
-
 echo "[] Setting up hostname rewrites"
 
 sudo cp hostname-rewrite-files /etc/init.d/hostname-rewrite-files
