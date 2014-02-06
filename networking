@@ -7,8 +7,11 @@
 # Default-Stop:      0 6
 # Short-Description: Raise network interfaces.
 ### END INIT INFO
-## INSTALL:
+#
+# INSTALL:
 # sudo cp networking.sh /etc/init.d/networking
+#
+############################################################
 
 PATH="/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin"
 
