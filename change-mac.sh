@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/bin/sh
+#
+# INSTALL:
 #
 # cp change-mac.sh /etc/init.d/change-mac.sh
 # chmod +x /etc/init.d/change-mac.sh
