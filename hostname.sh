@@ -13,14 +13,16 @@
 #                    The old hostname in /etc/hosts is also replaced
 #                    If everything fails, the value 'localhost' is used.
 ### END INIT INFO
+#
 # INSTALLING:
+#
 # sudo cp hostname.sh /etc/init.d/hostname.sh
 # sudo chmod u+x /etc/init.d/hostname.sh
 # sudo update-rc.d hostname.sh start 02 S .
-# install other script
+# install other script: hostname-rewrite-files
 # reboot & pray
-# WRITTEN BY Someone, May 2010
-
+# 
+#################################################
 
 PATH=/sbin:/bin
 
