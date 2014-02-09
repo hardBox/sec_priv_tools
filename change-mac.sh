@@ -14,9 +14,9 @@ ifconfig wlan0 down
 ifconfig wlan1 down
 
     # Spoof the mac addresses
-/usr/local/bin/macchanger -r eth0
-/usr/local/bin/macchanger -A wlan0
-/usr/local/bin/macchanger -A wlan1
+macchanger -r eth0
+macchanger -A wlan0
+macchanger -A wlan1
 
     # Re-enable the devices if wanted
 #    ifconfig eth0 up
