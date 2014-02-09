@@ -22,6 +22,8 @@ sudo update-rc.d hostname.sh start 02 S .
 
 
 echo "[] Setting up randmom MAC addresses at boot"
+
+sudo apt-get install macchanger
 cp change-mac.sh /etc/init.d/change-mac.sh
 chmod +x /etc/init.d/change-mac.sh
 update-rc.d change-mac.sh defaults
