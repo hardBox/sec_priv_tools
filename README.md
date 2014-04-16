@@ -6,7 +6,7 @@ ubuntu privacy &amp; security setup tools
 tools to randomize mac addresses and hostname at startup on ubuntu systems
 
 
-install.sh not finished yet
+- install.sh not finished yet
 
 
 
